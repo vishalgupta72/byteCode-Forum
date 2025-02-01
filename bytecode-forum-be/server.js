@@ -23,12 +23,20 @@ app.use(cors());  // Allow cross-origin requests
 app.use(bodyParser.json());  // Parse incoming JSON requests
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URL);
+// mongoose.connect(process.env.MONGODB_URL);
+
+mongoose.connect(process.env.MONGODB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000, // Reduce timeout
+  keepAlive: true, // Maintain persistent connection
+});
+
 mongoose.connection.on("connected", () => {
-  console.log("connected to MongoDB");
+  console.log("✅ Connected to MongoDB");
 });
 mongoose.connection.on("error", (e) => {
-  console.log("Error connecting to MongoDB", e);
+  console.error("❌ MongoDB Connection Error:", e);
 });
 
 // Use routes
