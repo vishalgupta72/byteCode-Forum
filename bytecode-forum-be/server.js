@@ -29,7 +29,6 @@ mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 5000, // Reduce timeout
-  keepAlive: true, // Maintain persistent connection
 });
 
 mongoose.connection.on("connected", () => {
