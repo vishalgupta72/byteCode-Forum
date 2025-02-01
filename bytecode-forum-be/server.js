@@ -19,7 +19,10 @@ require("dotenv").config();
 const app = express();
 
 // Middleware setup
-app.use(cors());  // Allow cross-origin requests
+app.use(cors({
+  origin: "https://bytecode-forum.vercel.app", // your client's URL
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}));  // Allow cross-origin requests
 app.use(bodyParser.json());  // Parse incoming JSON requests
 
 // Connect to MongoDB
