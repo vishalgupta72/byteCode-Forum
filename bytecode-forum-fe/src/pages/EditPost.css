@@ -1,0 +1,89 @@
+.edit-post-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .edit-post-page h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #2c353d;
+  }
+  
+  .form-group textarea {
+    height: 120px;
+  }
+  
+  .tags-container {
+    margin-bottom: 10px;
+  }
+  
+  .tag {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .remove-tag-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
+  .add-tag {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .add-tag input {
+    flex: 1;
+  }
+  .add-tag button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    border: none;
+    cursor: pointer;
+    background-image: none;
+    border-radius: 10px;
+    &:hover{
+        background-color: #218838;
+    }
+  }
+  
+  .btn-save {
+    background-color: #ff6934;
+    padding: 12px;
+    border-radius: 10px;
+
+    &:hover{
+        background-color: #ff4401;
+    }
+  }

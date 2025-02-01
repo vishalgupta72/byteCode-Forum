@@ -1,0 +1,71 @@
+.create-post{
+    padding: 20px;
+
+}
+
+.create-post .form-group{
+    width: 100%;
+    
+}
+
+.create-post .form-group input{
+    width: 94%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #262d34;
+}
+
+/* Change the background color of the control (the main select box) */
+.create-post .tags .css-13cymwt-control {
+    background-color: #262d34;
+  }
+  
+.create-post .tags .css-b62m3t-container {
+    color: #262d34;
+  }
+  
+  /* Change the background color of the options when they are not selected */
+  .create-post .tags .css-13cymwt-option {
+    background-color: #843232;
+  }
+  
+  /* Change the background color of the selected option */
+  .create-post .tags .react-select__option--is-selected {
+    background-color: #4a6888;
+    color: #129900;
+  }
+  
+  /* Change the background color of the dropdown menu */
+  .create-post .tags .react-select__menu {
+    background-color: #f9f9f9;
+  }
+  
+.create-post .form-group select{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #262d34;
+}
+
+.ql-snow .ql-picker.ql-header{
+    color: #fff;
+}
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options{
+    background-color: #262d34;
+}
+
+.ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg *,
+.ql-snow.ql-toolbar button svg * {
+    stroke: #fff;
+}
+
+.create-post .btn-create-post{
+    background-color: #ff6934;
+    padding: 10px;
+    border-radius: 10px;
+    width: 120px;
+
+    &:hover{
+        background-color: #ff4401;
+    }
+}

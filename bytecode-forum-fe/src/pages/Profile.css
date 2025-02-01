@@ -1,0 +1,11 @@
+.user-btn-follower, .user-btn-following, .user-btn-posts, .user-btn-likes, .user-btn-comments {
+  background-color: #ff6934;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #ff4401;
+  }
+}

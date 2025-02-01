@@ -1,0 +1,124 @@
+.sidebar {
+  position: fixed;
+  width: 300px;
+  color: #fff;
+  /* padding: 10px; */
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  margin-left: 20px;
+}
+
+.quick-links-section {
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    padding: 10px;
+
+    &:hover{
+        background-color: #2c353d;
+        border-radius: 10px;
+    }
+}
+
+.quick-links{
+    background-color: #262d34;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.quick-links-section h5 {
+  font-size: 16px;
+}
+
+.quick-links-section p {
+  font-size: 14px;
+  margin: 0;
+  color: #909297;
+}
+
+
+.popular-tags-section {
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    padding: 10px;
+
+    &:hover{
+        background-color: #2c353d;
+        border-radius: 10px;
+    }
+  }
+  
+  .popular-tags{
+      background-color: #262d34;
+      margin-bottom: 20px;
+      border-radius: 10px;
+  }
+  
+  .popular-tags-section h5 {
+    font-size: 16px;
+  }
+  
+  .popular-tags-section p {
+    font-size: 14px;
+    margin: 0;
+    color: #909297;
+  }
+
+
+
+  .pinned-group-section {
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    padding: 10px;
+
+    &:hover{
+        background-color: #2c353d;
+        border-radius: 10px;
+    }
+  }
+  
+  .pinned-group{
+      background-color: #262d34;
+      margin-bottom: 20px;
+      border-radius: 10px;
+  }
+  
+  .pinned-group-section h5 {
+    font-size: 16px;
+  }
+  
+  .pinned-group-section p {
+    font-size: 14px;
+    margin: 0;
+    color: #909297;
+  }
+
+.check-icon{
+    color: #ffffff;
+    fill: green;
+    background-color: #2c353d;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.following-user-icon{
+    /* color: #ffffff; */
+    fill: #ff6934;
+    border-color: #ff6934;
+    background-color: #2c353d;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.popular-of-day-icon{
+  fill: #eea956;
+    border-color: #eea956;
+    background-color: #2c353d;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.code-icon{
+    background-color: #2c353d;
+    padding: 4px;
+    border-radius: 10px;
+}

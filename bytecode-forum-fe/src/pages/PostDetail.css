@@ -1,0 +1,67 @@
+.post-detail-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .post-meta {
+    color: #949ba7;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .post-content p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .post-interactions {
+    margin: 20px 0;
+  }
+  
+  .like-btn {
+    background-color: #28a745;
+    &:hover{
+        background-color: #1e7e34;
+    }
+  }
+  
+  .dislike-btn {
+    background-color: #dc3545;
+    &:hover{
+        background-color: #b71c1c;
+    }
+  }
+  
+  .comments-section {
+    margin-top: 30px;
+  }
+  
+  .comment {
+    background-color: #494646;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .add-comment textarea {
+    background-color: #2c353d;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    /* border: 1px solid #020202; */
+  }
+  
+  .add-comment .btn {
+    float: right;
+  }
+  

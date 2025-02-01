@@ -1,0 +1,120 @@
+.contact-page {
+  max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex; /* Enables flexbox */
+    flex-direction: column; /* Aligns children vertically */
+    align-items: center; /* Centers children horizontally */
+    justify-content: center; /* Centers children vertically */
+    height: 70vh; /* Full viewport height for vertical centering */
+}
+
+.contact-page .contact-form{
+  width: 100%;
+}
+.contact-page .form-group {
+  position: relative;
+  width: 100%;
+}
+
+.contact-page .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #1d2b3a;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  transition: 0.4s;
+}
+
+.contact-page .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #1d2b3a;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  transition: 0.4s;
+}
+
+
+.contact-page .form-group span {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+
+.contact-page .form-group input:valid~span,
+.contact-page .form-group input:focus~span {
+  color: #ff6934;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #2c353d;
+    border-left: 1px solid #ff6934;
+    border-right: 1px solid #ff6934;
+    letter-spacing: 0.2em;
+}
+
+.contact-page .form-group input:valid~span,
+.contact-page .form-group input:focus~span {
+  background: #ff6934;
+  color: #909297;
+  border-radius: 2px;
+}
+
+.contact-page .form-group textarea:valid~span,
+.contact-page .form-group textarea:focus~span {
+  color: #ff6934;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #2c353d;
+    border-left: 1px solid #ff6934;
+    border-right: 1px solid #ff6934;
+    letter-spacing: 0.2em;
+}
+
+.contact-page .form-group input:valid~span,
+.contact-page .form-group input:focus~span {
+  background: #ff6934;
+    color: #909297;
+    border-radius: 2px;
+}
+
+.contact-page .form-group textarea:valid~span,
+.contact-page .form-group textarea:focus~span {
+  background: #ff6934;
+    color: #909297;
+    border-radius: 2px;
+}
+
+
+.contact-page .btn-send {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1rem;
+    color: white;
+    background-color: #ff6934;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+  &:hover{
+    background-color: #ff4401;
+}
+}
+
+.contact-page .thank-you-message {
+  font-size: 1.2rem;
+  color: green;
+}
