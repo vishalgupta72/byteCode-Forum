@@ -28,7 +28,7 @@ app.use(bodyParser.json());  // Parse incoming JSON requests
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 5000, // Reduce timeout
+  serverSelectionTimeoutMS: 10000, // Increase timeout to 10 seconds
 });
 
 mongoose.connection.on("connected", () => {
