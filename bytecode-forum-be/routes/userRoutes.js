@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/UserModel');
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const {protect} = require('../middlewares/authMiddleware')
@@ -21,7 +20,7 @@ router.post('/register', async (req, res) => {
     }
 
     // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 16);
+    const hashedPassword = await digestMessage(password);
     const newUser = await User.create({name, email, password: hashedPassword})
     // Create new user
 
@@ -50,7 +49,8 @@ router.post('/login', async (req, res) => {
     }
 
     // Compare the password
-    const isMatch = await bcrypt.compare(password, user.password);
+    const hashedPassword = await digestMessage(password);
+    const isMatch = hashedPassword === user.password;
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid password' });
     }
@@ -90,5 +90,13 @@ const getProtectedData = (req, res) => {
 
 // Protected route
 router.get('/protected', protect, getProtectedData);
+
+async function digestMessage(message) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(message);
+  const hash = await window.crypto.subtle.digest("SHA-256", data);
+  return hash;
+}
+
 
 module.exports = router;
