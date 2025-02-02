@@ -91,11 +91,16 @@ const getProtectedData = (req, res) => {
 // Protected route
 router.get('/protected', protect, getProtectedData);
 
-async function digestMessage(message) {
+async function digestMessage(/** @type {string} */ message) {
   const encoder = new TextEncoder();
   const data = encoder.encode(message);
-  const hash = await crypto.subtle.digest("SHA-256", data);
-  return hash;
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  
+  // Convert ArrayBuffer to hex string
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+  
+  return hashHex;
 }
 
 
