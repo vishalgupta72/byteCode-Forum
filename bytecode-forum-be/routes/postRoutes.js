@@ -64,6 +64,9 @@ router.get("/", async (req, res) => {
     .populate({ path: 'tags', select: 'name' })      
     .sort({ createdAt: -1 });
 
+    // console.log(posts);
+    
+
     if (!posts.length) {
       return res.status(404).json({ message: "No posts found" });
     }
@@ -98,6 +101,44 @@ router.get("/:id", async (req, res) => {
     res
       .status(500)
       .json({ message: "Error fetching post", error: err.message });
+  }
+});
+
+// Like or dislike a post
+router.put("/like-dislike", async (req, res) => {
+  try {
+    const { postId, userId } = req.body;
+
+    // Check if the post exists
+    const post = await Post.findById(postId);
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    // Check if the user has already liked the post
+    if (post.likes.includes(userId)) {
+      // User already liked the post, so remove them from likes (toggle off)
+      post.likes.pull(userId);
+      await post.save();
+      return res.status(200).json({ message: "Like removed successfully", post });
+    }
+
+    // Check if the user has already disliked the post
+    if (post.dislikes.includes(userId)) {
+      // User already disliked the post, so remove them from dislikes and add to likes
+      post.dislikes.pull(userId);
+      post.likes.push(userId);
+      await post.save();
+      return res.status(200).json({ message: "Post liked successfully", post });
+    }
+
+    // If the user hasn't liked or disliked the post, add them to likes
+    post.likes.push(userId);
+    await post.save();
+
+    res.status(200).json({ message: "Post liked successfully", post });
+  } catch (err) {
+    res.status(500).json({ message: "Error liking/disliking post", error: err.message });
   }
 });
 

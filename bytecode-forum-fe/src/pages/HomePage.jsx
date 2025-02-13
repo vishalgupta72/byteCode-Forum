@@ -1,32 +1,44 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { DotIcon } from "../components/Icons";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
-const HomePage = () => {
+const HomePage = ({search}) => {
 
   // get all posts form Database
-  // const [posts, setPosts] = React.useState([]);
+  const [posts, setPosts] = useState([]);
 
-  const getPosts = async () => {
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/posts`);
-      const data = await response.data;
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const navigate = useNavigate();
 
-
+  
   useEffect(()=>{
     document.title = "Home Page";
+    const getPosts = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/posts`);
+        const data = await response.data;
+        setPosts(data);
+        // console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
     getPosts();
   },[])
 
+  // Memoize the filtered posts
+  const filteredPosts = useMemo(() => {
+    return posts.filter((post) =>post.title.toLowerCase().includes(search.toLowerCase()));
+  }, [posts, search]);
+
+
+  const handleGetPost = (post)=>{
+    navigate(`/post/${post._id}`);
+  }
 
   return (
     <div className="home-contianer mt-4">
@@ -35,8 +47,7 @@ const HomePage = () => {
       <div className="flex gap-4 justify-between user-create-post">
         {/* profile pic */}
         <div className="profile w-12">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
+          <img src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
             alt="User"
             className="profile-pic"
           />
@@ -56,18 +67,36 @@ const HomePage = () => {
 
 
       {/* posts */}
-      <div className="user-create-post ">
+      {filteredPosts.map((post) =>(
+        <div key={post._id} onClick={()=>handleGetPost(post)} className="user-create-post cursor-pointer ">
         <div className="flex flex-row gap-4 justify-between">
         <div className="profile">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
+          <img src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
             alt="User"
             className="profile-pic"
           />
 
           <div className="user-profile-dis">
-            <p className="text-base">John Doe</p>
-            <p className="text-sm text-gray-400">2 hours ago</p>
+            <p className="text-base">{post.author?.name}</p>
+            <p className="text-sm text-gray-400">
+              {/* for time */}
+            {(() => {
+                // Extract the date and time portions
+                const datePart = post.createdAt.slice(0, 10);
+                const timePart = post.createdAt.slice(11, 19);
+
+                // Parse the time into a Date object
+                const [hours, minutes, seconds] = timePart.split(":").map(Number);
+                const date = new Date();
+                date.setHours(hours, minutes + 30, seconds); // Add 30 minutes
+                date.setHours(date.getHours() + 5); // Add 5 hours
+
+                // Format the updated time back into HH:mm:ss
+                const updatedTime = `${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}:${String(date.getSeconds()).padStart(2, "0")}`;
+
+                return `${datePart} at ${updatedTime}`;
+              })()}
+            </p>
           </div>
         </div>
 
@@ -75,33 +104,29 @@ const HomePage = () => {
           <DotIcon />
         </div>
         </div>
-        {/* <h1>sdkjhfudsihfiushi</h1> */}
         
 
-        <h1 className="text-4xl mb-2 mt-2">post heading</h1>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-          officia fugit assumenda ullam eligendi odio vel nulla dolore
-          perspiciatis incidunt pariatur, dolores quis, eveniet alias, maxime
-          illo facere nisi eum asperiores aliquam. Odit modi minima dolorum
-          saepe amet voluptates necessitatibus enim veritatis alias, nemo
-          cumque, quis earum velit exercitationem. Distinctio iure molestias,
-          aliquid dolore, repellat a, laborum nisi assumenda inventore quae?
-        </p>
+        <h1 className="text-2xl mb-2 mt-2">{post.title}</h1>
+        <p className="text-sm" dangerouslySetInnerHTML={{ __html: post.content }} />
 
         {/* tags name */}
         <div className="tags flex flex-row gap-4 text-sm text-gray-400 pt-1 m-3">
-          <p>#React</p>
+          
+          {post.tags.map((tag) => (
+            <p key={tag._id}>#{tag.name}</p>
+          ))}
+          {/* <p>#React</p>
           <p>#Node</p>
-          <p>#Express</p>
+          <p>#Express</p> */}
         </div>
 
         <div className="meta flex flex-row gap-4 text-sm text-gray-400 pt-1 justify-between ">
-          <p>10 Views</p>
-          <p>10 Likes</p>
-          <p>10 Comments</p>
+          <p>{post.views} Views</p>
+          <p>{post.likes?.length} Likes</p>
+          <p>{post.comments?.length} Comments</p>
         </div>
       </div>
+      ))}
       {/* post details */}
     </div>
     

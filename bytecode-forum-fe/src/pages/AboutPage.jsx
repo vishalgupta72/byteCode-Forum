@@ -7,11 +7,11 @@ const AboutPage = () => {
       <section className="hero-section">
         <div className="hero-content">
           <h1>About Me</h1>
-          <p>Hello! I'm Vishal, a passionate full-stack developer specializing in the MERN stack.</p>
+          <p>Hello! I'm Vishal, Passionate MERN stack developer with experience in building scalable web applications. Skilled in React, Node.js, Express, and MongoDB, with a strong focus on performance and user experience. Always eager to learn and implement new technologies.</p>
         </div>
         <img
-          src="https://placeholder.antonshell.me/img?height=400"
-          alt="Your profile"
+          src="https://www.rlogical.com/wp-content/uploads/2023/05/why-choose-mern-stack-for-developing-web-apps.webp"
+          alt="Vishal"
           className="profile-image"
         />
       </section>
@@ -25,8 +25,8 @@ const AboutPage = () => {
         </p>
         <p>With an emphasis on user-friendliness, the forum simplifies navigation, allowing users to focus on sharing insights, learning, and staying informed about the ever-evolving tech landscape.</p>
         <img
-          src="https://via.placeholder.com/600x300"
-          alt="Project demo"
+          src="https://www.dotcomwomen.com/wp-content/uploads/2019/02/online-community.jpg"
+          alt="byteCode-Forum"
           className="project-image"
         />
       </section>

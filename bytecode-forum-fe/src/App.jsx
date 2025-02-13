@@ -1,8 +1,5 @@
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NavLink, useNavigate } from "react-router-dom";
-// import { useEffect } from 'react';
 
 import "./App.css"; 
 import Navbar from "./components/Navbar";
@@ -32,9 +29,38 @@ import { Provider } from "react-redux";
 import {store} from "./redux/store"
 
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+
+
+function debounce(func, wait){
+  let timeout;
+  function debounced(...args){
+    clearTimeout(timeout);
+    timeout = setTimeout(()=>{
+      func.apply(this, args)
+    }, wait)
+  }
+
+  debounced.clearTimeout = ()=>{
+    clearTimeout(timeout);
+  }
+
+  return debounced;
+}
 
 function App() {
+
+  const [search, setSearch] = useState("");
+  
+  const handleSearch = useCallback(
+    debounce((value)=>{
+      setSearch(value);
+    }, 300)
+    ,[])
+    
+    console.log(search);
+
+
   function DynamicRoutic() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -59,7 +85,7 @@ function App() {
     return (
       <Routes>
         {/* Public Routes */}
-        <Route exact path="/" element={<HomePage />}></Route>
+        <Route exact path="/" element={<HomePage search={search} />}></Route>
         <Route exact path="/about" element={<AboutPage />}></Route>
         <Route exact path="/community" element={<CommunityPage />}></Route>
         <Route exact path="/code-share" element={<CodesharePage />}></Route>
@@ -81,7 +107,7 @@ function App() {
     <>
       <Provider store={store}>
       <Router>
-        <Navbar />
+        <Navbar setSearch={handleSearch} />
         <Sidebar />
         <div className="page sm:ml-[320px] lg:ml-[350px] p-2 lg:p-5">
           <DynamicRoutic />

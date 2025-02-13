@@ -1,20 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import {
-  AboutIcon,
-  ChatIcon,
-  CodeShareIcon,
-  CommunityIcon,
-  ContactIcon,
-  HomeIcon,
-  NotificationIcon,
-  RocketIcon,
-  SearchBoxIcon,
-} from "./Icons";
+import {AboutIcon,ChatIcon,CodeShareIcon,CommunityIcon,ContactIcon,HomeIcon,NotificationIcon,RocketIcon,SearchBoxIcon,} from "./Icons";
 import { useDispatch, useSelector } from "react-redux";
 
-const Navbar = () => {
+const Navbar = ({setSearch}) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,6 +16,9 @@ const Navbar = () => {
     dispatch({type: "LOGIN_ERROR"});
     navigate("/login");
   }
+
+  const userData = JSON.parse(localStorage.getItem("user"));
+  
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -78,6 +71,7 @@ const Navbar = () => {
             placeholder="Type here to search..."
             className="search-box"
             title="Search"
+            onChange={(e)=>setSearch(e.target.value)}
           />
         </div>
       </div>
@@ -102,7 +96,7 @@ const Navbar = () => {
             alt="User"
             className="profile-pic"
           />
-          <span className="profile-name">Vishal Gupta</span>
+          <span className="profile-name">{userData.name}</span>
           <span
             className={`triangle-icon ${isDropdownOpen ? "rotate-icon" : ""}`}
           >

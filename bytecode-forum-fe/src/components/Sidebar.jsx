@@ -4,7 +4,7 @@ import { CheckIcon, CodeIcon, FollowingUserIcon, PopularOfDayIcon } from "./Icon
 
 const Sidebar = () => {
   return (
-    <div className="sidebar overflow-auto max-h-full mt-7 pb-24 p-2">
+    <div className="sidebar overflow-auto max-h-full mt-7 pb-20 p-2">
       {/* quick links */}
       <div className="quick-links flex flex-col">
         <div className="quick-links-section flex items-center gap-2">
@@ -33,10 +33,10 @@ const Sidebar = () => {
 
       {/* popular tags */}
       <div className="popular-tags flex flex-col">
-        <h2 className="text-2xl font-sans m-3">Popular Tags</h2>
+        <h2 className="text-2xl font-sans m-3 select-none">Popular Tags →</h2>
 
         <div className="popular-tags-section flex items-center gap-2">
-          <PopularOfDayIcon />
+          <CodeIcon />
           <div className="flex flex-col">
           <h5>#javascript</h5>
           <p>82,465 Posted by this tag</p>
@@ -87,7 +87,7 @@ const Sidebar = () => {
       </div>
 
       {/* pinned-group */}
-      <div className="pinned-group flex flex-col">
+      {/* <div className="pinned-group flex flex-col">
         <h2 className="text-2xl font-sans m-3">Pinned Group →</h2>
 
         <div className="pinned-group-section flex items-center gap-2">
@@ -129,9 +129,7 @@ const Sidebar = () => {
           <p>48,025 Posted by this tag</p>
           </div>
         </div>
-
-
-      </div>
+      </div> */}
 
     </div>
   );
